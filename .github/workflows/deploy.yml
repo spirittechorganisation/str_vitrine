@@ -66,6 +66,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Synchronise docker-compose.yml sur le VPS (sinon les nouveaux
+      # services, comme mail-api, ne sont jamais créés)
+      - name: Copy docker-compose.yml to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          source: docker-compose.yml
+          target: /opt/vitrine
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.2.0
         with:
