@@ -1,4 +1,4 @@
-import { Send, Mail, MapPin, CheckCircle } from 'lucide-react';
+import { Send, Mail, MapPin, CheckCircle, LifeBuoy, Loader2, AlertCircle } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
 export default function Contact() {
@@ -7,8 +7,10 @@ export default function Contact() {
     email: '',
     service: '',
     message: '',
+    website: '', // honeypot anti-spam (champ caché)
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -28,17 +30,32 @@ export default function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Build mailto link
-    const subject = encodeURIComponent(`Demande de contact — ${formState.service || 'Général'}`);
-    const body = encodeURIComponent(
-      `Nom: ${formState.name}\nEmail: ${formState.email}\nService souhaité: ${formState.service}\n\nMessage:\n${formState.message}`
-    );
-    window.open(`mailto:contact@spirittechrevolution.com?subject=${subject}&body=${body}`, '_blank');
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setFormState({ name: '', email: '', service: '', message: '' });
+    if (status === 'sending') return;
+    setStatus('sending');
+    setErrorMsg('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || "L'envoi a échoué. Réessayez ou écrivez-nous directement par e-mail.");
+      }
+      setStatus('success');
+      setFormState({ name: '', email: '', service: '', message: '', website: '' });
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(
+        err instanceof TypeError
+          ? 'Impossible de joindre le serveur. Écrivez-nous directement à contact@spirittechrevolution.com.'
+          : (err as Error).message
+      );
+    }
   };
 
   return (
@@ -78,10 +95,23 @@ export default function Contact() {
                     <Mail className="w-5 h-5 text-mint-600" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-sage-800">Email</div>
-                    <a href="mailto:contact@spirittechrevolution.com" className="text-mint-600 hover:text-mint-700 transition-colors">
+                    <div className="text-sm font-semibold text-sage-800">Contact commercial</div>
+                    <a href="mailto:contact@spirittechrevolution.com" className="text-mint-600 hover:text-mint-700 transition-colors break-all">
                       contact@spirittechrevolution.com
                     </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-mint-100 to-emerald-50 flex items-center justify-center shrink-0 shadow-md shadow-mint-200/30">
+                    <LifeBuoy className="w-5 h-5 text-mint-600" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-sage-800">Support technique</div>
+                    <a href="mailto:support@spirittechrevolution.com" className="text-mint-600 hover:text-mint-700 transition-colors break-all">
+                      support@spirittechrevolution.com
+                    </a>
+                    <p className="text-xs text-sage-400 mt-1">Pour les clients utilisant nos solutions</p>
                   </div>
                 </div>
 
@@ -112,6 +142,19 @@ export default function Contact() {
           {/* Form */}
           <div className={`lg:col-span-3 transition-all duration-700 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`} style={{ transitionDelay: '200ms' }}>
             <form onSubmit={handleSubmit} className="glass-card rounded-3xl p-8 sm:p-10 space-y-6">
+              {/* Honeypot anti-spam : invisible pour les humains */}
+              <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, overflow: 'hidden' }}>
+                <label htmlFor="website">Ne pas remplir</label>
+                <input
+                  id="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formState.website}
+                  onChange={(e) => setFormState({ ...formState, website: e.target.value })}
+                />
+              </div>
+
               <div className="grid sm:grid-cols-2 gap-6">
                 {/* Name */}
                 <div className="space-y-2">
@@ -168,6 +211,7 @@ export default function Contact() {
                   <option value="Conception d'Expériences">Conception d'Expériences</option>
                   <option value="Intégration & Infrastructure">Intégration & Infrastructure</option>
                   <option value="Innovation & Transformation">Innovation & Transformation</option>
+                  <option value="Support technique">Support technique</option>
                 </select>
               </div>
 
@@ -187,15 +231,28 @@ export default function Contact() {
                 />
               </div>
 
+              {status === 'error' && (
+                <div role="alert" className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50/80 px-4 py-3 text-sm text-red-700">
+                  <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
+
               {/* Submit */}
               <button
                 type="submit"
-                className="btn-primary w-full !py-4 text-base"
+                disabled={status === 'sending'}
+                className="btn-primary w-full !py-4 text-base disabled:opacity-70 disabled:cursor-wait"
               >
-                {submitted ? (
+                {status === 'sending' ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Envoi en cours…
+                  </>
+                ) : status === 'success' ? (
                   <>
                     <CheckCircle className="w-5 h-5" />
-                    Message envoyé !
+                    Message envoyé ! Réponse sous 24 h.
                   </>
                 ) : (
                   <>

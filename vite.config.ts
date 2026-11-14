@@ -21,6 +21,10 @@ export default defineConfig({
   server: {
     host: "127.0.0.1",
     port: 5173,
+    // En dev : lancer l'API (cd mail-api && npm run dev) pour tester le formulaire
+    proxy: {
+      "/api": "http://127.0.0.1:3000",
+    },
   },
   build: {
     sourcemap: false,

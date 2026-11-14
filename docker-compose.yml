@@ -7,7 +7,7 @@
 #   cd /opt/vitrine
 #   docker compose --env-file .env up -d
 #
-# Image Docker Hub : spirittechrevolution/str-vitrine
+# Images Docker Hub : spirittechrevolution/str-vitrine, spirittechrevolution/str-mail-api
 # URL publique     : https://spirittechrevolution.com
 # ===================================================================
 
@@ -43,6 +43,30 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
+
+  # ── API d'envoi du formulaire de contact ─────────────────────────
+  # Servie sur https://www.${INFRA_DOMAIN}/api/*
+  mail-api:
+    image: spirittechrevolution/str-mail-api:${TAG:-latest}
+    container_name: str-mail-api
+    restart: unless-stopped
+    networks:
+      - proxy
+    environment:
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT:-465}
+      SMTP_SECURE: ${SMTP_SECURE:-true}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      MAIL_FROM: ${MAIL_FROM:-}
+      CONTACT_TO: ${CONTACT_TO:-contact@spirittechrevolution.com}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.vitrine-api.rule=Host(`www.${INFRA_DOMAIN}`) && PathPrefix(`/api`)
+      - traefik.http.routers.vitrine-api.entrypoints=websecure
+      - traefik.http.routers.vitrine-api.tls.certresolver=letsencrypt
+      - traefik.http.routers.vitrine-api.priority=100
+      - traefik.http.services.vitrine-api.loadbalancer.server.port=3000
 
 networks:
   proxy:

@@ -48,6 +48,17 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Build & Push mail-api
+        uses: docker/build-push-action@v6
+        with:
+          context: ./mail-api
+          push: true
+          tags: |
+            spirittechrevolution/str-mail-api:latest
+            spirittechrevolution/str-mail-api:${{ github.sha }}
+          cache-from: type=gha,scope=mail-api
+          cache-to: type=gha,mode=max,scope=mail-api
+
   # ─── 2. Deploy sur le VPS ──────────────────────────────────────────
   deploy:
     name: Deploy to VPS

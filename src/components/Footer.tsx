@@ -50,12 +50,20 @@ export default function Footer() {
               Solutions digitales sur mesure. Spirit Tech Revolution transforme vos idées en
               produits technologiques performants.
             </p>
-            <a
-              href="mailto:contact@spirittechrevolution.com"
-              className="text-mint-400 text-sm font-medium hover:text-mint-300 transition-colors"
-            >
-              contact@spirittechrevolution.com
-            </a>
+            <div className="flex flex-col gap-1.5">
+              <a
+                href="mailto:contact@spirittechrevolution.com"
+                className="text-mint-400 text-sm font-medium hover:text-mint-300 transition-colors break-all"
+              >
+                contact@spirittechrevolution.com
+              </a>
+              <a
+                href="mailto:support@spirittechrevolution.com"
+                className="text-sage-300 text-sm hover:text-mint-300 transition-colors break-all"
+              >
+                support@spirittechrevolution.com
+              </a>
+            </div>
           </div>
 
           {/* Link Columns */}
