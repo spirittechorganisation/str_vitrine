@@ -159,14 +159,14 @@ export default function Products() {
       <div className="relative max-w-7xl mx-auto section-padding" ref={sectionRef}>
         {/* Section Header */}
         <div className="max-w-2xl mb-16">
-          <span className="inline-block text-sm font-semibold text-mint-600 tracking-wider uppercase mb-4 font-mono">
+          <span className="inline-block text-sm font-semibold text-mint-700 tracking-wider uppercase mb-4 font-mono">
             Nos Solutions
           </span>
           <h2 className="font-display text-4xl sm:text-5xl text-sage-900 leading-tight mb-6">
             Nos solutions,
             <span className="gradient-text block mt-1">de l'idée à la prod</span>
           </h2>
-          <p className="text-lg text-sage-400 leading-relaxed">
+          <p className="text-lg text-sage-600 leading-relaxed">
             Chaque solution Spirit Tech répond à un besoin réel du marché africain.
             En production ou en cours de développement, nos produits sont conçus pour durer.
           </p>
@@ -210,14 +210,14 @@ export default function Products() {
                 {/* Content */}
                 <div className="relative">
                   <h3 className="font-display text-3xl text-sage-900 mb-1">{product.name}</h3>
-                  <p className="text-mint-600 font-medium text-sm mb-4">{product.tagline}</p>
-                  <p className="text-sage-500 leading-relaxed mb-6">{product.description}</p>
+                  <p className="text-mint-700 font-medium text-sm mb-4">{product.tagline}</p>
+                  <p className="text-sage-600 leading-relaxed mb-6">{product.description}</p>
 
                   {/* Features list */}
                   <ul className="space-y-2.5 mb-8">
                     {product.features.map((feature) => (
                       <li key={feature} className="flex items-center gap-2.5 text-sm text-sage-600">
-                        <CheckCircle2 className="w-4 h-4 text-mint-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-mint-600 shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -241,7 +241,7 @@ export default function Products() {
                       href={product.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-mint-600 hover:text-mint-700 group/link transition-colors"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-mint-700 hover:text-mint-800 group/link transition-colors"
                     >
                       Accéder à l'application
                       <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" />
@@ -249,7 +249,7 @@ export default function Products() {
                   ) : (
                     <a
                       href="#contact"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-sage-500 hover:text-mint-600 group/link transition-colors"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-sage-600 hover:text-mint-600 group/link transition-colors"
                     >
                       <Mail className="w-4 h-4" />
                       En savoir plus — nous contacter

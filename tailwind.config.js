@@ -7,6 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Fond de page neutre (remplace le vert pâle mint-50)
+        paper: '#f4f5f2',
         mint: {
           50: '#f0fdf6',
           100: '#dcfce9',
@@ -31,6 +33,7 @@ export default {
           700: '#4a563e',
           800: '#3d4734',
           900: '#343d2d',
+          950: '#1c2318',
         },
         emerald: {
           950: '#022c22',

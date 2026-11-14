@@ -52,7 +52,7 @@ export default function Hero() {
             </h1>
 
             <p
-              className="text-base sm:text-lg text-sage-400 leading-relaxed max-w-lg animate-fade-up"
+              className="text-base sm:text-lg text-sage-600 leading-relaxed max-w-lg animate-fade-up"
               style={{ animationDelay: '0.16s' }}
             >
               Solutions digitales sur mesure, conseil stratégique et transformation
@@ -80,17 +80,17 @@ export default function Hero() {
             >
               <div>
                 <div className="text-xl font-bold text-sage-900 font-mono tabular-nums">2</div>
-                <div className="text-[12px] text-sage-400 mt-0.5">Solutions</div>
+                <div className="text-[12px] text-sage-600 mt-0.5">Solutions</div>
               </div>
               <div className="w-px h-8 bg-sage-200/50" />
               <div>
                 <div className="text-xl font-bold text-sage-900 font-mono tabular-nums">24/7</div>
-                <div className="text-[12px] text-sage-400 mt-0.5">Monitoring</div>
+                <div className="text-[12px] text-sage-600 mt-0.5">Monitoring</div>
               </div>
               <div className="w-px h-8 bg-sage-200/50" />
               <div>
                 <div className="text-xl font-bold text-sage-900 font-mono tabular-nums">Afrique</div>
-                <div className="text-[12px] text-sage-400 mt-0.5">de l'Ouest</div>
+                <div className="text-[12px] text-sage-600 mt-0.5">de l'Ouest</div>
               </div>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function Hero() {
                 <div className="flex items-center justify-between px-5 py-3 border-b border-sage-100/40">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-mint-500" />
-                    <span className="text-[11px] font-mono text-sage-500 tracking-wide uppercase">Nos Produits</span>
+                    <span className="text-[11px] font-mono text-sage-600 tracking-wide uppercase">Nos Produits</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-sage-200" />
@@ -118,7 +118,7 @@ export default function Hero() {
                 <div className="px-5 py-4 space-y-4">
 
                   {/* Dinthialma */}
-                  <a href="#solutions" className="group/row flex items-center gap-4 p-3 rounded-xl hover:bg-mint-50/60 transition-colors duration-200">
+                  <a href="https://www.dinthialma.com" target="_blank" rel="noopener noreferrer" className="group/row flex items-center gap-4 p-3 rounded-xl hover:bg-mint-50/60 transition-colors duration-200">
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-mint-600 flex items-center justify-center shrink-0 shadow-md shadow-emerald-200/40">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" />
@@ -126,7 +126,7 @@ export default function Hero() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold text-sage-900">Dinthialma</div>
-                      <div className="text-[11px] text-sage-400 mt-0.5">Tontines & épargne collective</div>
+                      <div className="text-[11px] text-sage-600 mt-0.5">Tontines & épargne collective</div>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
                       <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
@@ -145,7 +145,7 @@ export default function Hero() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold text-sage-900">Citerne</div>
-                      <div className="text-[11px] text-sage-400 mt-0.5">Jaugeage de citernes industrielles</div>
+                      <div className="text-[11px] text-sage-600 mt-0.5">Jaugeage de citernes industrielles</div>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-semibold bg-sage-50 text-sage-600 border border-sage-200 shrink-0">
                       <span className="w-1 h-1 rounded-full bg-sage-400" />
@@ -158,9 +158,9 @@ export default function Hero() {
                 <div className="px-5 py-3 border-t border-sage-100/40 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[10px] text-sage-500 font-mono">Systèmes opérationnels</span>
+                    <span className="text-[10px] text-sage-600 font-mono">Systèmes opérationnels</span>
                   </div>
-                  <span className="text-[10px] text-sage-400 font-mono">spirittechrevolution.com</span>
+                  <span className="text-[10px] text-sage-600 font-mono">spirittechrevolution.com</span>
                 </div>
               </div>
 

@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply font-body text-sage-900 bg-mint-50;
+    @apply font-body text-sage-900 bg-paper;
   }
 
   ::selection {
@@ -24,18 +24,18 @@
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-mint-500 via-emerald-500 to-mint-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-mint-600 via-emerald-600 to-mint-700;
     background-size: 200% auto;
     animation: shimmer 4s ease-in-out infinite;
   }
 
   .glass-card {
-    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-xl shadow-mint-200/10;
+    @apply bg-white/90 backdrop-blur-xl border border-sage-200/60 shadow-xl shadow-sage-900/5;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .glass-card:hover {
-    @apply bg-white/80 border-white/60 shadow-2xl shadow-mint-300/20;
+    @apply bg-white border-mint-200 shadow-2xl shadow-sage-900/10;
   }
 
   .btn-primary {

@@ -90,12 +90,12 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
       {/* Content */}
       <h3 className="relative font-display text-2xl text-sage-900 mb-3">{service.title}</h3>
-      <p className="relative text-sage-500 leading-relaxed mb-6">{service.description}</p>
+      <p className="relative text-sage-600 leading-relaxed mb-6">{service.description}</p>
 
       {/* Link */}
       <a
         href="#contact"
-        className="relative inline-flex items-center gap-2 text-sm font-semibold text-mint-600 group-hover:text-mint-700 transition-colors"
+        className="relative inline-flex items-center gap-2 text-sm font-semibold text-mint-700 group-hover:text-mint-700 transition-colors"
       >
         En savoir plus
         <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
@@ -118,14 +118,14 @@ export default function Services() {
       {/* Section Header */}
       <div className="max-w-7xl mx-auto section-padding mb-16">
         <div className="max-w-2xl">
-          <span className="inline-block text-sm font-semibold text-mint-600 tracking-wider uppercase mb-4 font-mono">
+          <span className="inline-block text-sm font-semibold text-mint-700 tracking-wider uppercase mb-4 font-mono">
             Nos Expertises
           </span>
           <h2 className="font-display text-4xl sm:text-5xl text-sage-900 leading-tight mb-6">
             Des solutions complètes pour
             <span className="gradient-text block mt-1">chaque défi numérique</span>
           </h2>
-          <p className="text-lg text-sage-400 leading-relaxed">
+          <p className="text-lg text-sage-600 leading-relaxed">
             De la stratégie à la mise en production, nous couvrons l'ensemble
             de votre transformation digitale avec excellence et agilité.
           </p>

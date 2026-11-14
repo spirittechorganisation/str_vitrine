@@ -70,14 +70,14 @@ export default function Contact() {
       <div className="relative max-w-7xl mx-auto section-padding" ref={sectionRef}>
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block text-sm font-semibold text-mint-600 tracking-wider uppercase mb-4 font-mono">
+          <span className="inline-block text-sm font-semibold text-mint-700 tracking-wider uppercase mb-4 font-mono">
             Contact
           </span>
           <h2 className="font-display text-4xl sm:text-5xl text-sage-900 leading-tight mb-6">
             Prêt à concrétiser
             <span className="gradient-text block mt-1">votre projet ?</span>
           </h2>
-          <p className="text-lg text-sage-400 leading-relaxed">
+          <p className="text-lg text-sage-600 leading-relaxed">
             Parlons de vos ambitions. Notre équipe vous répond sous 24 heures
             avec une proposition adaptée à vos besoins.
           </p>
@@ -92,11 +92,11 @@ export default function Contact() {
               <div className="space-y-5">
                 <div className="flex items-start gap-4">
                   <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-mint-100 to-emerald-50 flex items-center justify-center shrink-0 shadow-md shadow-mint-200/30">
-                    <Mail className="w-5 h-5 text-mint-600" />
+                    <Mail className="w-5 h-5 text-mint-700" />
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-sage-800">Contact commercial</div>
-                    <a href="mailto:contact@spirittechrevolution.com" className="text-mint-600 hover:text-mint-700 transition-colors break-all">
+                    <a href="mailto:contact@spirittechrevolution.com" className="text-mint-700 hover:text-mint-800 transition-colors break-all">
                       contact@spirittechrevolution.com
                     </a>
                   </div>
@@ -104,24 +104,24 @@ export default function Contact() {
 
                 <div className="flex items-start gap-4">
                   <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-mint-100 to-emerald-50 flex items-center justify-center shrink-0 shadow-md shadow-mint-200/30">
-                    <LifeBuoy className="w-5 h-5 text-mint-600" />
+                    <LifeBuoy className="w-5 h-5 text-mint-700" />
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-sage-800">Support technique</div>
-                    <a href="mailto:support@spirittechrevolution.com" className="text-mint-600 hover:text-mint-700 transition-colors break-all">
+                    <a href="mailto:support@spirittechrevolution.com" className="text-mint-700 hover:text-mint-800 transition-colors break-all">
                       support@spirittechrevolution.com
                     </a>
-                    <p className="text-xs text-sage-400 mt-1">Pour les clients utilisant nos solutions</p>
+                    <p className="text-xs text-sage-600 mt-1">Pour les clients utilisant nos solutions</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-mint-100 to-emerald-50 flex items-center justify-center shrink-0 shadow-md shadow-mint-200/30">
-                    <MapPin className="w-5 h-5 text-mint-600" />
+                    <MapPin className="w-5 h-5 text-mint-700" />
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-sage-800">Localisation</div>
-                    <p className="text-sage-500 text-sm leading-relaxed">
+                    <p className="text-sage-600 text-sm leading-relaxed">
                       Afrique de l'Ouest
                     </p>
                   </div>
@@ -131,7 +131,7 @@ export default function Contact() {
 
             {/* Quick Note */}
             <div className="glass-card rounded-2xl p-6 border-l-4 border-mint-400 glow-card">
-              <p className="text-sm text-sage-500 leading-relaxed">
+              <p className="text-sm text-sage-600 leading-relaxed">
                 <span className="font-semibold text-sage-700">Consultation gratuite :</span>{' '}
                 Premier appel de 30 minutes offert pour comprendre vos besoins
                 et vous proposer la meilleure approche technique.
@@ -168,7 +168,7 @@ export default function Contact() {
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                     placeholder="Jean Dupont"
-                    className="w-full px-5 py-3.5 rounded-xl bg-mint-50/60 border border-mint-100/80 text-sage-800 placeholder:text-sage-300 focus:outline-none focus:ring-2 focus:ring-mint-400/40 focus:border-mint-300 focus:bg-white/80 transition-all duration-300"
+                    className="w-full px-5 py-3.5 rounded-xl bg-white border border-sage-200 text-sage-800 placeholder:text-sage-400 focus:outline-none focus:ring-2 focus:ring-mint-400/40 focus:border-mint-300 focus:bg-white/80 transition-all duration-300"
                   />
                 </div>
 
@@ -184,7 +184,7 @@ export default function Contact() {
                     value={formState.email}
                     onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                     placeholder="jean@entreprise.fr"
-                    className="w-full px-5 py-3.5 rounded-xl bg-mint-50/60 border border-mint-100/80 text-sage-800 placeholder:text-sage-300 focus:outline-none focus:ring-2 focus:ring-mint-400/40 focus:border-mint-300 focus:bg-white/80 transition-all duration-300"
+                    className="w-full px-5 py-3.5 rounded-xl bg-white border border-sage-200 text-sage-800 placeholder:text-sage-400 focus:outline-none focus:ring-2 focus:ring-mint-400/40 focus:border-mint-300 focus:bg-white/80 transition-all duration-300"
                   />
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default function Contact() {
                   id="service"
                   value={formState.service}
                   onChange={(e) => setFormState({ ...formState, service: e.target.value })}
-                  className="w-full px-5 py-3.5 rounded-xl bg-mint-50/60 border border-mint-100/80 text-sage-800 focus:outline-none focus:ring-2 focus:ring-mint-400/40 focus:border-mint-300 focus:bg-white/80 transition-all duration-300 appearance-none"
+                  className="w-full px-5 py-3.5 rounded-xl bg-white border border-sage-200 text-sage-800 focus:outline-none focus:ring-2 focus:ring-mint-400/40 focus:border-mint-300 focus:bg-white/80 transition-all duration-300 appearance-none"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23788763' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -227,7 +227,7 @@ export default function Contact() {
                   value={formState.message}
                   onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                   placeholder="Décrivez votre projet, vos objectifs et vos contraintes..."
-                  className="w-full px-5 py-3.5 rounded-xl bg-mint-50/60 border border-mint-100/80 text-sage-800 placeholder:text-sage-300 focus:outline-none focus:ring-2 focus:ring-mint-400/40 focus:border-mint-300 focus:bg-white/80 transition-all duration-300 resize-none"
+                  className="w-full px-5 py-3.5 rounded-xl bg-white border border-sage-200 text-sage-800 placeholder:text-sage-400 focus:outline-none focus:ring-2 focus:ring-mint-400/40 focus:border-mint-300 focus:bg-white/80 transition-all duration-300 resize-none"
                 />
               </div>
 

@@ -1,6 +1,8 @@
 import { ArrowUp } from 'lucide-react';
 
-const footerLinks = {
+type FooterLink = { label: string; href: string; external?: boolean };
+
+const footerLinks: Record<string, FooterLink[]> = {
   Services: [
     { label: 'Solutions Sur Mesure', href: '#services' },
     { label: 'Expériences Numériques', href: '#services' },
@@ -8,7 +10,7 @@ const footerLinks = {
     { label: 'Innovation & Transformation', href: '#services' },
   ],
   'Nos Solutions': [
-    { label: 'Dinthialma', href: '#solutions' },
+    { label: 'Dinthialma', href: 'https://www.dinthialma.com', external: true },
     { label: 'Citerne', href: '#solutions' },
   ],
   Entreprise: [
@@ -75,6 +77,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
+                      {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       className="text-sage-300 text-sm hover:text-mint-400 transition-colors duration-200 hover:translate-x-1 inline-block"
                     >
                       {link.label}

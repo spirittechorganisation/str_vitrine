@@ -41,7 +41,7 @@ export default function Header() {
             <span className="font-display text-lg tracking-tight text-sage-900 leading-none">
               Spirit Tech
             </span>
-            <span className="text-[8px] font-medium text-sage-400 tracking-[0.2em] uppercase leading-none mt-0.5">
+            <span className="text-[8px] font-medium text-sage-600 tracking-[0.2em] uppercase leading-none mt-0.5">
               Revolution
             </span>
           </div>

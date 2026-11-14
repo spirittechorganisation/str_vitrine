@@ -51,7 +51,7 @@ export default function About() {
   return (
     <section id="apropos" className="relative py-28 lg:py-36 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-mint-50/30 to-white pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-paper via-white to-paper pointer-events-none" />
 
       {/* Large Decorative Text */}
       <div className="absolute top-1/2 -translate-y-1/2 -left-20 pointer-events-none select-none opacity-[0.03]">
@@ -64,19 +64,19 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Text */}
           <div className={`space-y-6 transition-all duration-700 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-            <span className="inline-block text-sm font-semibold text-mint-600 tracking-wider uppercase font-mono">
+            <span className="inline-block text-sm font-semibold text-mint-700 tracking-wider uppercase font-mono">
               Pourquoi Nous
             </span>
             <h2 className="font-display text-4xl sm:text-5xl text-sage-900 leading-tight">
               L'excellence au service
               <span className="gradient-text block mt-1">de votre ambition</span>
             </h2>
-            <p className="text-lg text-sage-400 leading-relaxed">
+            <p className="text-lg text-sage-600 leading-relaxed">
               Nous ne sommes pas simplement des développeurs — nous sommes vos partenaires
               technologiques. Chaque ligne de code que nous écrivons est pensée pour
               créer de la valeur durable pour votre entreprise.
             </p>
-            <p className="text-sage-500 leading-relaxed">
+            <p className="text-sage-600 leading-relaxed">
               Notre équipe combine expertise technique de pointe et compréhension
               métier approfondie pour livrer des solutions qui dépassent les attentes
               et génèrent un impact réel.
@@ -110,7 +110,7 @@ export default function About() {
                     <Icon className="w-6 h-6" style={{ color: reason.color }} />
                   </div>
                   <h4 className="font-display text-lg text-sage-900 mb-2">{reason.title}</h4>
-                  <p className="text-sm text-sage-400 leading-relaxed">{reason.description}</p>
+                  <p className="text-sm text-sage-600 leading-relaxed">{reason.description}</p>
                 </div>
               );
             })}
