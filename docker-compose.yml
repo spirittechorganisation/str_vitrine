@@ -7,13 +7,13 @@
 #   cd /opt/vitrine
 #   docker compose --env-file .env up -d
 #
-# Images Docker Hub : spirittechrevolution/str-vitrine, spirittechrevolution/str-mail-api
+# Images Docker Hub : spirittechorganisation/str-vitrine, spirittechorganisation/str-mail-api
 # URL publique     : https://spirittechrevolution.com
 # ===================================================================
 
 services:
   vitrine:
-    image: spirittechrevolution/str-vitrine:${TAG:-latest}
+    image: spirittechorganisation/str-vitrine:${TAG:-latest}
     container_name: str-vitrine
     restart: unless-stopped
     networks:
@@ -47,7 +47,7 @@ services:
   # ── API d'envoi du formulaire de contact ─────────────────────────
   # Servie sur https://www.${INFRA_DOMAIN}/api/*
   mail-api:
-    image: spirittechrevolution/str-mail-api:${TAG:-latest}
+    image: spirittechorganisation/str-mail-api:${TAG:-latest}
     container_name: str-mail-api
     restart: unless-stopped
     networks:

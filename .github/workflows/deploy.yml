@@ -3,8 +3,8 @@
 # Build Docker → Docker Hub → Deploy VPS
 #
 # Secrets GitHub requis (Settings → Secrets and variables → Actions) :
-#   DOCKER_HUB_USERNAME      → spirittechrevolution
-#   DOCKER_HUB_TOKEN         → token Docker Hub
+#   DOCKER_HUB_USERNAME      → spirittechorganisation
+#   DOCKER_HUB_TOKEN         → jeton github-actions-ci du compte spirittechorganisation (Read & Write)
 #   VPS_HOST                 → 155.117.40.193
 #   VPS_USER                 → administrator
 #   VPS_SSH_PRIVATE_KEY      → clé SSH dédiée CI/CD
@@ -43,8 +43,8 @@ jobs:
           context: .
           push: true
           tags: |
-            spirittechrevolution/str-vitrine:latest
-            spirittechrevolution/str-vitrine:${{ github.sha }}
+            spirittechorganisation/str-vitrine:latest
+            spirittechorganisation/str-vitrine:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -54,8 +54,8 @@ jobs:
           context: ./mail-api
           push: true
           tags: |
-            spirittechrevolution/str-mail-api:latest
-            spirittechrevolution/str-mail-api:${{ github.sha }}
+            spirittechorganisation/str-mail-api:latest
+            spirittechorganisation/str-mail-api:${{ github.sha }}
           cache-from: type=gha,scope=mail-api
           cache-to: type=gha,mode=max,scope=mail-api
 
