@@ -1,0 +1,83 @@
+# Intégration continue : vérifie chaque PR avant la fusion (règles de l'organisation, IN39).
+#
+# Flux : sous-branche → develop → main. Ce workflow tourne sur toute PR vers develop ou main.
+# Il ne déploie rien : le déploiement reste dans deploy.yml (push sur main).
+# Les actions sont épinglées sur les MÊMES SHA que deploy.yml : toute mise à jour
+# doit être faite dans les deux fichiers à la fois.
+
+name: CI – Vitrine
+
+on:
+  pull_request:
+    branches: [develop, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  image-vitrine:
+    name: Build image vitrine (sans push)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      # Le Dockerfile lance npm install puis npm run build : un échec de compilation
+      # fait échouer ce job avant la fusion.
+      - name: Build de l'image (sans push)
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          push: false
+          tags: str-vitrine-ci:pr
+          cache-from: type=gha
+          cache-to: type=gha,mode=min
+
+  image-mail-api:
+    name: Build image mail-api (sans push)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      - name: Build de l'image (sans push)
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: ./mail-api
+          push: false
+          tags: str-mail-api-ci:pr
+          cache-from: type=gha,scope=mail-api
+          cache-to: type=gha,mode=min,scope=mail-api
+
+  # Sondes : ces actions ont besoin de secrets, elles ne sont donc pas exécutées.
+  # Le runner les télécharge quand même au démarrage du job : une action refusée par
+  # l'organisation ou une référence invalide fait échouer ce job ici, et non le
+  # déploiement sur main.
+  sondes:
+    name: Sondes – actions de déploiement
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Sonde – login Docker Hub (non exécutée)
+        if: ${{ false }}
+        uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
+
+      - name: Sonde – copie scp (non exécutée)
+        if: ${{ false }}
+        uses: appleboy/scp-action@917f8b81dfc1ccd331fef9e2d61bdc6c8be94634 # v0.1.7
+
+      - name: Sonde – déploiement SSH (non exécutée)
+        if: ${{ false }}
+        uses: appleboy/ssh-action@7eaf76671a0d7eec5d98ee897acda4f968735a17 # v1.2.0
+
+      - name: Sondes chargées
+        run: echo "Toutes les actions de déploiement sont autorisées par l'organisation."
